@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Examen_TarjetaModelStoreContainer" CdmEntityContainer="Examen_TarjetaEntities">
+    <FunctionImportMapping FunctionImportName="Delete_Tarjeta" FunctionName="Examen_TarjetaModel.Store.Delete_Tarjeta" />
+    <FunctionImportMapping FunctionImportName="Edit_Estado" FunctionName="Examen_TarjetaModel.Store.Edit_Estado" />
+    <EntitySetMapping Name="Tbl_Tarjeta">
+      <EntityTypeMapping TypeName="Examen_TarjetaModel.Tbl_Tarjeta">
+        <MappingFragment StoreEntitySet="Tbl_Tarjeta">
+          <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+          <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+          <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+          <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+          <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Insert_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Insert_Tarjetas" />
+    <FunctionImportMapping FunctionImportName="Edit_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Edit_Tarjetas" />
+    <FunctionImportMapping FunctionImportName="Get_Tarjeta" FunctionName="Examen_TarjetaModel.Store.Get_Tarjeta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_Tarjeta_Result">
+          <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+          <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+          <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+          <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Get_Tarjetas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_Tarjetas_Result">
+          <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+          <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+          <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+          <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+          <ScalarProperty Name="calculo" ColumnName="calculo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_TarjetasRespaldo" FunctionName="Examen_TarjetaModel.Store.Get_TarjetasRespaldo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_TarjetasRespaldo_Result">
+          <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+          <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+          <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+          <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

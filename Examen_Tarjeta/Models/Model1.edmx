@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Examen_TarjetaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Examen_Tarjeta.dbo.Tbl_Tarjeta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Tbl_Tarjeta">
+          <Key>
+            <PropertyRef Name="Id_Tarjeta" />
+            <PropertyRef Name="Numero_Tarjeta" />
+            <PropertyRef Name="CVV" />
+            <PropertyRef Name="Fecha_Exp" />
+            <PropertyRef Name="Banco" />
+            <PropertyRef Name="Dueno" />
+          </Key>
+          <Property Name="Id_Tarjeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero_Tarjeta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CVV" Type="int" Nullable="false" />
+          <Property Name="Fecha_Exp" Type="date" Nullable="false" />
+          <Property Name="Banco" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto_Banco" Type="varchar" MaxLength="150" />
+          <Property Name="Emisor" Type="varchar" MaxLength="50" />
+          <Property Name="Dueno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastCharacters" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="Delete_Tarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Edit_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Edit_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="NumeroTarjeta" Type="varchar" Mode="In" />
+          <Parameter Name="CVV" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Tarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_TarjetasRespaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumeroTarjet" Type="varchar" Mode="In" />
+          <Parameter Name="CVV" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Exp" Type="date" Mode="In" />
+          <Parameter Name="Banco" Type="varchar" Mode="In" />
+          <Parameter Name="FotoBanco" Type="varchar" Mode="In" />
+          <Parameter Name="Emisor" Type="varchar" Mode="In" />
+          <Parameter Name="Dueno" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Examen_TarjetaModelStoreContainer">
+          <EntitySet Name="Tbl_Tarjeta" EntityType="Self.Tbl_Tarjeta" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Tbl_Tarjeta].[Id_Tarjeta] AS [Id_Tarjeta], 
+[Tbl_Tarjeta].[Numero_Tarjeta] AS [Numero_Tarjeta], 
+[Tbl_Tarjeta].[CVV] AS [CVV], 
+[Tbl_Tarjeta].[Fecha_Exp] AS [Fecha_Exp], 
+[Tbl_Tarjeta].[Banco] AS [Banco], 
+[Tbl_Tarjeta].[Foto_Banco] AS [Foto_Banco], 
+[Tbl_Tarjeta].[Emisor] AS [Emisor], 
+[Tbl_Tarjeta].[Dueno] AS [Dueno], 
+[Tbl_Tarjeta].[LastCharacters] AS [LastCharacters]
+FROM [dbo].[Tbl_Tarjeta] AS [Tbl_Tarjeta]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Examen_TarjetaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Examen_TarjetaEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Delete_Tarjeta">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Edit_Estado">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="Tbl_Tarjeta" EntityType="Examen_TarjetaModel.Tbl_Tarjeta" />
+          <FunctionImport Name="Insert_Tarjetas">
+            <Parameter Name="NumeroTarjet" Mode="In" Type="String" />
+            <Parameter Name="CVV" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Exp" Mode="In" Type="DateTime" />
+            <Parameter Name="Banco" Mode="In" Type="String" />
+            <Parameter Name="FotoBanco" Mode="In" Type="String" />
+            <Parameter Name="Emisor" Mode="In" Type="String" />
+            <Parameter Name="Dueno" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Edit_Tarjetas">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroTarjeta" Mode="In" Type="String" />
+            <Parameter Name="CVV" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Tarjeta" ReturnType="Collection(Examen_TarjetaModel.Get_Tarjeta_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Tarjetas" ReturnType="Collection(Examen_TarjetaModel.Get_Tarjetas_Result)">
+            <Parameter Name="Param" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_TarjetasRespaldo" ReturnType="Collection(Examen_TarjetaModel.Get_TarjetasRespaldo_Result)">
+            <Parameter Name="Param" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Tbl_Tarjeta">
+          <Key>
+            <PropertyRef Name="Id_Tarjeta" />
+            <PropertyRef Name="Numero_Tarjeta" />
+            <PropertyRef Name="CVV" />
+            <PropertyRef Name="Fecha_Exp" />
+            <PropertyRef Name="Banco" />
+            <PropertyRef Name="Dueno" />
+          </Key>
+          <Property Name="Id_Tarjeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero_Tarjeta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CVV" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Exp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Banco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Foto_Banco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Emisor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dueno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastCharacters" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="Get_Tarjeta_Result">
+          <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+          <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CVV" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+          <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_Tarjetas_Result">
+          <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+          <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CVV" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+          <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="calculo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_TarjetasRespaldo_Result">
+          <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+          <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CVV" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+          <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Examen_TarjetaModelStoreContainer" CdmEntityContainer="Examen_TarjetaEntities">
+          <FunctionImportMapping FunctionImportName="Delete_Tarjeta" FunctionName="Examen_TarjetaModel.Store.Delete_Tarjeta" />
+          <FunctionImportMapping FunctionImportName="Edit_Estado" FunctionName="Examen_TarjetaModel.Store.Edit_Estado" />
+          <EntitySetMapping Name="Tbl_Tarjeta">
+            <EntityTypeMapping TypeName="Examen_TarjetaModel.Tbl_Tarjeta">
+              <MappingFragment StoreEntitySet="Tbl_Tarjeta">
+                <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+                <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+                <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+                <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+                <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Insert_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Insert_Tarjetas" />
+          <FunctionImportMapping FunctionImportName="Edit_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Edit_Tarjetas" />
+          <FunctionImportMapping FunctionImportName="Get_Tarjeta" FunctionName="Examen_TarjetaModel.Store.Get_Tarjeta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_Tarjeta_Result">
+                <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+                <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+                <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+                <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Tarjetas" FunctionName="Examen_TarjetaModel.Store.Get_Tarjetas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_Tarjetas_Result">
+                <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+                <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+                <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+                <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+                <ScalarProperty Name="calculo" ColumnName="calculo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_TarjetasRespaldo" FunctionName="Examen_TarjetaModel.Store.Get_TarjetasRespaldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Examen_TarjetaModel.Get_TarjetasRespaldo_Result">
+                <ScalarProperty Name="Id_Tarjeta" ColumnName="Id_Tarjeta" />
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Fecha_Exp" ColumnName="Fecha_Exp" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="Foto_Banco" ColumnName="Foto_Banco" />
+                <ScalarProperty Name="Emisor" ColumnName="Emisor" />
+                <ScalarProperty Name="Dueno" ColumnName="Dueno" />
+                <ScalarProperty Name="LastCharacters" ColumnName="LastCharacters" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

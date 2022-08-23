@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar una tarjeta</h2>
+
+
+@using (Html.BeginForm("Agregar", "Home", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group mt-2">
+                    <label>Número Tarjeta:</label>
+                    <input type="text" name="Numero_Tarjeta" id="Numero_Tarjeta" class="form-control" required />
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>CVV:</label>
+                    <input type="text" name="CVV" id="CVV" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Fecha Experación:</label>
+                    <input type="date" name="Fecha_Exp" id="Fecha_Exp" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Banco:</label>
+                    <input type="text" name="Banco" id="Banco" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Foto Banco:</label>
+                    <input type="file" name="Foto_Banco" id="Foto_Banco" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Emisor:</label>
+                    <input type="text" name="Emisor" id="Emisor" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label>Titular:</label>
+                    <input type="text" name="Dueno" id="Dueno" class="form-control" required>
+                </div>
+
+                <div class="form-group mt-4">
+                    <input type="submit" value="Ingresar" id="btnInsertar" class="btn btn-success" />
+                    <a href="~/Home/Tarjetas" class="btn btn-primary">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

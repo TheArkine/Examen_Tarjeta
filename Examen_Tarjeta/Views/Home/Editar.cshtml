@@ -1,0 +1,38 @@
+﻿@model Examen_Tarjeta.Models.Get_Tarjeta_Result
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmEditarComite" method="post">
+
+    <div class="container">
+
+        <h2 class="text-center mt-4 mb-5">Editar Tarjeta</h2>
+        <div class="row">
+            <div class="col col-2"></div>
+            <div class="col col-8">
+                <input hidden type="text" name="Id_Tarjeta" id="Id_Tarjeta" value="@Model.Id_Tarjeta" class="form-control text-center text-muted" disabled />
+
+                <div class="form-control form-control-lg mb-1">
+                    <label>Número de Tarjeta: </label>
+                    <input type="text" name="Numero_Tarjeta" id="Numero_Tarjeta" class="form-control" value="@Model.Numero_Tarjeta" />
+                </div>
+
+                <div class="form-control form-control-lg mb-1">
+                    <label>CVV: </label>
+                    <input type="text" name="CVV" id="CVV" class="form-control  text-form" value="@Model.CVV" />
+                </div>
+
+
+                <div class="form-group mt-3">
+                    <input type="submit" value="Editar" id="btnEditar" class="btn btn-success" />
+                    <a href="~/Home/Tarjetas" class="btn btn-primary">Regresar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Examen_TarjetaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Examen_TarjetaEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Delete_Tarjeta">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Edit_Estado">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="Tbl_Tarjeta" EntityType="Examen_TarjetaModel.Tbl_Tarjeta" />
+    <FunctionImport Name="Insert_Tarjetas">
+      <Parameter Name="NumeroTarjet" Mode="In" Type="String" />
+      <Parameter Name="CVV" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha_Exp" Mode="In" Type="DateTime" />
+      <Parameter Name="Banco" Mode="In" Type="String" />
+      <Parameter Name="FotoBanco" Mode="In" Type="String" />
+      <Parameter Name="Emisor" Mode="In" Type="String" />
+      <Parameter Name="Dueno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Edit_Tarjetas">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroTarjeta" Mode="In" Type="String" />
+      <Parameter Name="CVV" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Tarjeta" ReturnType="Collection(Examen_TarjetaModel.Get_Tarjeta_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Tarjetas" ReturnType="Collection(Examen_TarjetaModel.Get_Tarjetas_Result)">
+      <Parameter Name="Param" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Get_TarjetasRespaldo" ReturnType="Collection(Examen_TarjetaModel.Get_TarjetasRespaldo_Result)">
+      <Parameter Name="Param" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Tbl_Tarjeta">
+    <Key>
+      <PropertyRef Name="Id_Tarjeta" />
+      <PropertyRef Name="Numero_Tarjeta" />
+      <PropertyRef Name="CVV" />
+      <PropertyRef Name="Fecha_Exp" />
+      <PropertyRef Name="Banco" />
+      <PropertyRef Name="Dueno" />
+    </Key>
+    <Property Name="Id_Tarjeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero_Tarjeta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CVV" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Exp" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Banco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foto_Banco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Emisor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dueno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastCharacters" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="Get_Tarjeta_Result">
+    <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+    <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CVV" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+    <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Get_Tarjetas_Result">
+    <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+    <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CVV" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+    <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="calculo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Get_TarjetasRespaldo_Result">
+    <Property Type="Int32" Name="Id_Tarjeta" Nullable="false" />
+    <Property Type="String" Name="Numero_Tarjeta" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CVV" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Exp" Nullable="false" />
+    <Property Type="String" Name="Banco" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Foto_Banco" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Emisor" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Dueno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastCharacters" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

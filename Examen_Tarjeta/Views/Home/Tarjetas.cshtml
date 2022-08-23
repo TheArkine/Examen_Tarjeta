@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Tarjetas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Tarjetas</h2>
+
+@using (Html.BeginForm("Tarjetas", "Home", FormMethod.Get))
+{
+    <div class="mb-3">
+        
+        <input type="text" class="form-control" id="BancoEmisor" name="BancoEmisor" placeholder="">
+    </div>
+
+    <div class="col-lg-12" style="text-align:center">
+        <button type="submit" class="btn btn-info" style="float: right">Buscar</button>
+    </div>
+}
+
+<a href="~/Home/Agregar" class="btn btn-warning mb-3"><i class="fa-solid fa-plus"></i></a>
+
+@{ foreach (Examen_Tarjeta.Models.Get_Tarjetas_Result posicion in Model)
+    {
+        <div class="card mb-3 text-white bg-dark" style="max-width: 540px; border: 100px;">
+            <div class="row">
+               
+                <div class="">
+                    <div class="card-body">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-9">
+                                    <h5 class="card-title">@posicion.Banco, @posicion.Emisor</h5>
+                                    <p class="card-text"> #### #### #### <strong>@posicion.LastCharacters</strong></p>
+                                </div>
+                                <div class="col-3">
+                                    <img src="~/images/@posicion.Foto_Banco" class="img-fluid rounded-start" style="width: 50px; height:50px;" alt="...">
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (@posicion.calculo < -3)
+                        {
+
+                            <p class="card-text"><small class="text-muted">@posicion.Fecha_Exp.ToString("MM/yy")</small></p>
+                        }
+                        else
+                        {
+                            <p class="card-text badge bg-danger"><small class="">@posicion.Fecha_Exp.ToString("MM/yy")</small></p>
+                        }
+
+
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" onclick="isChecked()" id="Estado" checked>
+                                    <p id="mensaje">Activo</p>
+
+                                    @*DISABLED*@
+                                    <script>
+                                        function isChecked() {
+                                            if (document.getElementById("Estado").checked) {
+                                                document.getElementById("mensaje").textContent = "Activo"
+                                            } else {
+                                                document.getElementById("mensaje").textContent = "Inactivo"
+                                            }
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <a href="~/Home/Editar?id=@posicion.Id_Tarjeta" class="btn btn-primary"><i class="fa-solid fa-pen-to-square small"></i></a>
+
+                                <a href="~/Home/Eliminar?id=@posicion.Id_Tarjeta" class="btn btn-danger border"
+                                   data-bs-toggle="modal" data-bs-target="#Eliminar"
+                                   onclick="Eliminar(@posicion.Id_Tarjeta)"><i class="fa-solid fa-trash-can small"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }}
+
+
+
+
+@using (Html.BeginForm("Eliminar", "Home", FormMethod.Post))
+{
+    <!-- Modal -->
+    <div class="modal fade" id="Eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Tarjeta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Quiere eliminar esta tarjeta?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cerrar</button>
+                    <input type="text" name="Id_Tarjeta" id="inputDelete" value="" hidden />
+                    <button type="submit" value="id" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/scripts/Delete.js"></script>
+<script src="~/Scripts/NumeroTarjeta.js"></script>

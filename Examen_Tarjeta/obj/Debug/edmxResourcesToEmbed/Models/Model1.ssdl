@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Examen_TarjetaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Examen_Tarjeta.dbo.Tbl_Tarjeta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Tbl_Tarjeta">
+    <Key>
+      <PropertyRef Name="Id_Tarjeta" />
+      <PropertyRef Name="Numero_Tarjeta" />
+      <PropertyRef Name="CVV" />
+      <PropertyRef Name="Fecha_Exp" />
+      <PropertyRef Name="Banco" />
+      <PropertyRef Name="Dueno" />
+    </Key>
+    <Property Name="Id_Tarjeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero_Tarjeta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CVV" Type="int" Nullable="false" />
+    <Property Name="Fecha_Exp" Type="date" Nullable="false" />
+    <Property Name="Banco" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Foto_Banco" Type="varchar" MaxLength="150" />
+    <Property Name="Emisor" Type="varchar" MaxLength="50" />
+    <Property Name="Dueno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastCharacters" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="Delete_Tarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Edit_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Edit_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="NumeroTarjeta" Type="varchar" Mode="In" />
+    <Parameter Name="CVV" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Tarjeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Param" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_TarjetasRespaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Param" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_Tarjetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroTarjet" Type="varchar" Mode="In" />
+    <Parameter Name="CVV" Type="int" Mode="In" />
+    <Parameter Name="Fecha_Exp" Type="date" Mode="In" />
+    <Parameter Name="Banco" Type="varchar" Mode="In" />
+    <Parameter Name="FotoBanco" Type="varchar" Mode="In" />
+    <Parameter Name="Emisor" Type="varchar" Mode="In" />
+    <Parameter Name="Dueno" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Examen_TarjetaModelStoreContainer">
+    <EntitySet Name="Tbl_Tarjeta" EntityType="Self.Tbl_Tarjeta" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Tbl_Tarjeta].[Id_Tarjeta] AS [Id_Tarjeta], 
+[Tbl_Tarjeta].[Numero_Tarjeta] AS [Numero_Tarjeta], 
+[Tbl_Tarjeta].[CVV] AS [CVV], 
+[Tbl_Tarjeta].[Fecha_Exp] AS [Fecha_Exp], 
+[Tbl_Tarjeta].[Banco] AS [Banco], 
+[Tbl_Tarjeta].[Foto_Banco] AS [Foto_Banco], 
+[Tbl_Tarjeta].[Emisor] AS [Emisor], 
+[Tbl_Tarjeta].[Dueno] AS [Dueno], 
+[Tbl_Tarjeta].[LastCharacters] AS [LastCharacters]
+FROM [dbo].[Tbl_Tarjeta] AS [Tbl_Tarjeta]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
